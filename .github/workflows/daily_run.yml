@@ -53,18 +53,3 @@ jobs:
         run: git push
         env:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-
-  deploy:
-    needs: run-script
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' # Ensure we only deploy from the main branch
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.ACCESS_TOKEN }}
-          publish_dir: ./ 
