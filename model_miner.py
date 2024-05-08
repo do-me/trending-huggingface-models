@@ -6,6 +6,7 @@ import requests
 import pandas as pd 
 from tqdm import tqdm 
 import panel as pn
+import json 
 tqdm.pandas()
 
 # Base URL for the API
@@ -218,13 +219,7 @@ header_filter_table.save(f"data/feature-extraction/transformersjs_{today}.html")
 # # Send ntfy notifications
 
 # %%
-import requests
-import pandas as pd
-import json  # Import the json module
-
-# Assume df is your pandas DataFrame
-
-# Format the DataFrame into a Markdown list
+# Format the DataFrame into a list
 list_message = f"Trending HuggingFace Embedding Models - {today}\n"
 list_message += f"{df.__len__()} available for feature-extraction in transformers.js:\n\n"
 
@@ -233,35 +228,57 @@ for index, row in df.head(10).iterrows():
 
 list_message += f"Meta data about all {df.__len__()} models can be downloaded on GitHub as csv, xlsx, json, parquet, html. Models can be downloaded from HuggingFace. Originally designed for SemanticFinder, a web app for in-browser semantic search where you can test all models without installing anything."
 
-# Define the channel name
-channel_name = "feature_extraction_transformers_js_models"
 
-# Construct the URL for the ntfy.sh server
-url = f"https://ntfy.sh/"
+# %%
+import requests
+import json
+from datetime import datetime
+
+# Get the current date and weekday
+current_date = datetime.now()
+current_day_of_week = current_date.weekday()
+current_day_of_month = current_date.day
+
+# Define the base URL for the ntfy.sh server
+base_url = "https://ntfy.sh/"
 
 # Prepare the actions as a list of dictionaries
 actions = [
     {"action": "view", "label": "GitHub", "url": "https://github.com/do-me/trending-huggingface-models"},
     {"action": "view", "label": "HuggingFace", "url": "https://huggingface.co/models?library=transformers.js&other=feature-extraction&sort=trending"},
-        {"action": "view", "label": "SemanticFinder", "url": "https://do-me.github.io/SemanticFinder/"}
+    {"action": "view", "label": "SemanticFinder", "url": "https://do-me.github.io/SemanticFinder/"}
 ]
 
-# Create the payload as a dictionary
-payload = {
-    "topic": channel_name,
-    "message": list_message,
-    "actions": actions
+# Define the channel names
+channels = {
+    "daily": "feature_extraction_transformers_js_models_daily",
+    "weekly": "feature_extraction_transformers_js_models_weekly",
+    "monthly": "feature_extraction_transformers_js_models_monthly"
 }
 
-# Send the notification
-response = requests.post(url, json.dumps(payload))
+# Function to send notification
+def send_notification(channel, message):
+    payload = {
+        "topic": channel,
+        "message": list_message,
+        "actions": actions
+    }
+    response = requests.post(base_url, json=payload)
+    print(f"Notification sent to {channel}. Status Code: {response.status_code}")
 
-# Check if the request was successful
-if response.status_code == 200:
-    print("Notification sent successfully!")
-else:
-    print(f"Failed to send notification. Status code: {response.status_code}")
+# Send daily notification
+send_notification(channels["daily"], "Daily request message")
 
+# Check if today is Monday (0 is Monday, 6 is Sunday) and send weekly notification
+if current_day_of_week == 0:
+    send_notification(channels["weekly"], "Weekly request message")
+
+# Check if today is the first of the month and send monthly notification
+if current_day_of_month == 1:
+    send_notification(channels["monthly"], "Monthly request message")
+
+# %%
+print(df.head(10))
 
 # %%
 

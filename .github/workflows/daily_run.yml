@@ -31,3 +31,21 @@ jobs:
 
     - name: Run script
       run: python model_miner.py
+
+    # Configure git user (necessary for committing changes)
+    - name: Configure git user
+      run: |
+        git config --global user.name '${{ github.actor }}'
+        git config --global user.email '${{ github.actor }}@users.noreply.github.com'
+
+    # Add generated files to the git index (you may need to modify the path to the files)
+    - name: Add files
+      run: git add data/feature-extraction/*
+
+    # Commit the changes
+    - name: Commit files
+      run: git commit -m "Add generated model files"
+
+    # Push the changes back to the repository
+    - name: Push changes
+      run: git push
