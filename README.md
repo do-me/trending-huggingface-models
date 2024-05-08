@@ -3,6 +3,9 @@ Notifications and ready-to-use exports (csv, xlsx, parquet, json, html) with tre
 
 The data is mined daily from https://huggingface.co/models?library=transformers.js&other=feature-extraction&sort=trending and the individual model's pages (for onnx file size).
 
+![image](https://github.com/do-me/trending-huggingface-models/assets/47481567/498e3c65-2def-41a8-9022-4803f5d9be7e)
+
+
 Sends notifications to 3 channels in ntfy: 
 - Daily updates:
 - Weekly updates:
