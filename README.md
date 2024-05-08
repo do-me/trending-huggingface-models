@@ -7,9 +7,9 @@ The data is mined daily from https://huggingface.co/models?library=transformers.
 
 
 Sends notifications to 3 channels in ntfy: 
-- Daily updates:
-- Weekly updates:
-- Monthly updates:
+- Daily updates: https://ntfy.sh/feature_extraction_transformers_js_models_daily
+- Weekly updates: https://ntfy.sh/feature_extraction_transformers_js_models_weekly
+- Monthly updates: https://ntfy.sh/feature_extraction_transformers_js_models_monthly
 
 Originally desgined for [SemanticFinder](https://github.com/do-me/SemanticFinder) but has potential for other use cases.
 
