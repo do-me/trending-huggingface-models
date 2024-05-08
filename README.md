@@ -14,6 +14,9 @@ Originally desgined for [SemanticFinder](https://github.com/do-me/SemanticFinder
 
 PR's highly appreciated! 
 
+## Run locally 
+The script is executed once per day on GitHub actions so there is no need to run it yourself to get latest updates. If you'd like to customize it to your needs instead, you can clone the repo, install the requirements.txt (best in a virtual env) and run either the Python script or the Jupyter notebook. The Python script is derived from the notebook (.ipynb).
+
 ## To Dos
 - Add rank delta to see what models are becoming more or less popular
 - Add caching to download only new meta data
