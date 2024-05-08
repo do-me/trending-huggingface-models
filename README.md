@@ -16,6 +16,7 @@ PR's highly appreciated!
 
 ## To Dos
 - Add rank delta to see what models are becoming more or less popular
+- Add caching to download only new meta data
 - Add MTEB scores
 - Allow for more channels with different ranking (like, downloads, trending, MTEB scores...), whatever might suit your needs
 - Add other models, not only for feature-extraction
