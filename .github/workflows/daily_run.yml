@@ -6,10 +6,10 @@ on:
     - cron: '0 8 * * *'
   push:
     branches:
-      - main # Replace with your default branch if it's not 'main'
+      - main
   pull_request:
     branches:
-      - main # Replace with your default branch if it's not 'main'
+      - main
 
 jobs:
   run-script:
@@ -22,7 +22,7 @@ jobs:
     - name: Set up Python environment
       uses: actions/setup-python@v4
       with:
-        python-version: '3.x' # Replace '3.x' with the specific Python version if needed
+        python-version: '3.11'
 
     - name: Install dependencies
       run: |
@@ -30,4 +30,4 @@ jobs:
         pip install -r requirements.txt
 
     - name: Run script
-      run: python your_script.py # Replace 'your_script.py' with the path to your script
+      run: python model_miner.py
