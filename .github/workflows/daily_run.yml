@@ -55,24 +55,14 @@ jobs:
   deploy:
     needs: run-script
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' # Ensure we only deploy from the main branch
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build
-        run: npm run build
-
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          personal_token: ${{ secrets.ACCESS_TOKEN }}
-          publish_dir: ./dist
+          github_token: ${{ secrets.ACCESS_TOKEN }}
+          publish_dir: ./ 
