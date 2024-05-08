@@ -40,7 +40,9 @@ jobs:
 
       # Add generated files to the git index
       - name: Add files
-        run: git add data/feature-extraction/*
+        run: |
+          git add data/feature-extraction/*
+          git add index.html
 
       # Commit the changes
       - name: Commit files
