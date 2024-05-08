@@ -212,6 +212,7 @@ header_filter_table = pn.widgets.Tabulator(
 
 # Save the widget to HTML with header filters
 header_filter_table.save(f"data/feature-extraction/transformersjs_{today}.html")
+header_filter_table.save(f"index.html")
 #df.to_html(index=False) # pandas has not sorting/filtering option
 
 
