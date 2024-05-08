@@ -35,8 +35,8 @@ jobs:
     # Configure git user (necessary for committing changes)
     - name: Configure git user
       run: |
-        git config --global user.name '${{ github.actor }}'
-        git config --global user.email '${{ github.actor }}@users.noreply.github.com'
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
 
     # Add generated files to the git index (you may need to modify the path to the files)
     - name: Add files
@@ -48,4 +48,4 @@ jobs:
 
     # Push the changes back to the repository
     - name: Push changes
-      run: git push
+      run: git push https://${{ secrets.access_token }}@github.com/do-me/trending-huggingface-models
