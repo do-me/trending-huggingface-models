@@ -206,7 +206,7 @@ tabulator_editors = {
 
 # Create the Tabulator widget with header filters
 header_filter_table = pn.widgets.Tabulator(
-    df, layout='fit_columns',
+    df, sizing_mode='stretch_width', layout='fit_columns',
     editors=tabulator_editors, header_filters=True
 )
 
