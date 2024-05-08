@@ -48,4 +48,4 @@ jobs:
 
     # Push the changes back to the repository
     - name: Push changes
-      run: git push https://${{ secrets.access_token }}@github.com/do-me/trending-huggingface-models
+      run: git push https://${{ secrets.ACCESS_TOKEN }}@github.com/do-me/trending-huggingface-models
