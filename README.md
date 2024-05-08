@@ -5,7 +5,6 @@ The data is mined daily from https://huggingface.co/models?library=transformers.
 
 ![image](https://github.com/do-me/trending-huggingface-models/assets/47481567/498e3c65-2def-41a8-9022-4803f5d9be7e)
 
-
 Sends notifications to 3 channels in ntfy: 
 - Daily updates: https://ntfy.sh/feature_extraction_transformers_js_models_daily
 - Weekly updates: https://ntfy.sh/feature_extraction_transformers_js_models_weekly
