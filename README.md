@@ -1,4 +1,7 @@
 # Trending HuggingFace Models
+
+Update 27/05/2026: Github Action deactivated due to lack of community interest.
+
 Notifications and ready-to-use exports (csv, xlsx, parquet, json, html) with trending feature-extraction models for downstream applications using transformers.js. 
 
 The data is mined daily from https://huggingface.co/models?library=transformers.js&other=feature-extraction&sort=trending and the individual model's pages (for onnx file size).
